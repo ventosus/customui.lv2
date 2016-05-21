@@ -1,0 +1,87 @@
+# Copyright (c) 2016 Hanspeter Portner (dev@open-music-kontrollers.ch)
+#
+# This is free software: you can redistribute it and/or modify
+# it under the terms of the Artistic License 2.0 as published by
+# The Perl Foundation.
+#
+# This source is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# Artistic License 2.0 for more details.
+#
+# You should have received a copy of the Artistic License 2.0
+# along the source as a COPYING file. If not, obtain it from
+# http://www.perlfoundation.org/artistic_license_2_0.
+
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix owl:	<http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ui:   <http://lv2plug.in/ns/extensions/ui#> .
+@prefix kx:		<http://kxstudio.sf.net/ns/lv2ext/external-ui#> .
+
+@prefix all:	<http://open-music-kontrollers.ch/lv2/alluis#> .
+
+# to please sord_validate
+ui:EoUI
+	a rdfs:Class, owl:Class ;
+	rdfs:subClassOf ui:UI .
+kx:Widget
+	a rdfs:Class, owl:Class ;
+	rdfs:subClassOf ui:UI .
+kx:Host
+	a lv2:Feature .
+
+all:test
+	a lv2:Plugin ;
+	lv2:minorVersion @ALLUIS_MINOR_VERSION@ ;
+	lv2:microVersion @ALLUIS_MICRO_VERSION@ ;
+	lv2:binary <alluis@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	ui:ui all:ui_1_x11 ;
+	ui:ui all:ui_2_gtk2 ;
+	ui:ui all:ui_3_gtk3 ;
+	ui:ui all:ui_4_qt4 ;
+	ui:ui all:ui_5_qt5 ;
+	ui:ui all:ui_6_show ;
+	ui:ui all:ui_7_kx ;
+	ui:ui all:ui_8_eo ;
+	rdfs:seeAlso <alluis.ttl> .
+
+all:ui_1_x11
+	a ui:X11UI ;
+	ui:binary <alluis_x11@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .
+
+all:ui_2_gtk2
+	a ui:GtkUI ;
+	ui:binary <alluis_gtk2@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .
+
+all:ui_3_gtk3
+	a ui:Gtk3UI ;
+	ui:binary <alluis_gtk3@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .
+
+all:ui_4_qt4
+	a ui:Qt4UI ;
+	ui:binary <alluis_qt4@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .
+
+all:ui_5_qt5
+	a ui:Qt5UI ;
+	ui:binary <alluis_qt5@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .
+
+all:ui_6_show
+	a ui:UI ;
+	ui:binary <alluis_show@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .
+
+all:ui_7_kx
+	a kx:Widget ;
+	ui:binary <alluis_kx@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .
+
+all:ui_8_eo
+	a ui:EoUI ;
+	ui:binary <alluis_eo@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <alluis_ui.ttl> .

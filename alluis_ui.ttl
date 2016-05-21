@@ -1,0 +1,51 @@
+# Copyright (c) 2016 Hanspeter Portner (dev@open-music-kontrollers.ch)
+#
+# This is free software: you can redistribute it and/or modify
+# it under the terms of the Artistic License 2.0 as published by
+# The Perl Foundation.
+#
+# This source is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# Artistic License 2.0 for more details.
+#
+# You should have received a copy of the Artistic License 2.0
+# along the source as a COPYING file. If not, obtain it from
+# http://www.perlfoundation.org/artistic_license_2_0.
+
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ui:   <http://lv2plug.in/ns/extensions/ui#> .
+@prefix kx:		<http://kxstudio.sf.net/ns/lv2ext/external-ui#> .
+
+@prefix all:	<http://open-music-kontrollers.ch/lv2/alluis#> .
+
+all:ui_1_x11
+	a ui:X11UI ;
+	lv2:requiredFeature ui:idleInterface ;
+	lv2:optionalFeature ui:resize ;
+  lv2:extensionData ui:idleInterface, ui:resize .
+
+all:ui_2_gtk2
+	a ui:GtkUI .
+
+all:ui_3_gtk3
+	a ui:Gtk3UI .
+
+all:ui_4_qt4
+	a ui:Qt4UI .
+
+all:ui_5_qt5
+	a ui:Qt5UI .
+
+all:ui_6_show
+	a ui:UI ;
+	lv2:requiredFeature ui:idleInterface ;
+	lv2:extensionData ui:idleInterface, ui:showInterface .
+
+all:ui_7_kx
+	a kx:Widget ;
+	lv2:requiredFeature kx:Host .
+
+all:ui_8_eo
+	a ui:EoUI .
