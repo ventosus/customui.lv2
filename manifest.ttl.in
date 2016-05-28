@@ -19,69 +19,30 @@
 @prefix ui:   <http://lv2plug.in/ns/extensions/ui#> .
 @prefix kx:		<http://kxstudio.sf.net/ns/lv2ext/external-ui#> .
 
-@prefix all:	<http://open-music-kontrollers.ch/lv2/alluis#> .
+@prefix custom:	<http://open-music-kontrollers.ch/lv2/customui#> .
 
 # to please sord_validate
-ui:EoUI
-	a rdfs:Class, owl:Class ;
-	rdfs:subClassOf ui:UI .
 kx:Widget
 	a rdfs:Class, owl:Class ;
 	rdfs:subClassOf ui:UI .
 kx:Host
 	a lv2:Feature .
 
-all:test
+custom:test
 	a lv2:Plugin ;
-	lv2:minorVersion @ALLUIS_MINOR_VERSION@ ;
-	lv2:microVersion @ALLUIS_MICRO_VERSION@ ;
-	lv2:binary <alluis@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	ui:ui all:ui_1_x11 ;
-	ui:ui all:ui_2_gtk2 ;
-	ui:ui all:ui_3_gtk3 ;
-	ui:ui all:ui_4_qt4 ;
-	ui:ui all:ui_5_qt5 ;
-	ui:ui all:ui_6_show ;
-	ui:ui all:ui_7_kx ;
-	ui:ui all:ui_8_eo ;
-	rdfs:seeAlso <alluis.ttl> .
+	lv2:minorVersion @CUSTOMUI_MINOR_VERSION@ ;
+	lv2:microVersion @CUSTOMUI_MICRO_VERSION@ ;
+	lv2:binary <customui@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	ui:ui custom:ui_6_show ;
+	ui:ui custom:ui_7_kx ;
+	rdfs:seeAlso <customui.ttl> .
 
-all:ui_1_x11
-	a ui:X11UI ;
-	ui:binary <alluis_x11@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
-
-all:ui_2_gtk2
-	a ui:GtkUI ;
-	ui:binary <alluis_gtk2@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
-
-all:ui_3_gtk3
-	a ui:Gtk3UI ;
-	ui:binary <alluis_gtk3@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
-
-all:ui_4_qt4
-	a ui:Qt4UI ;
-	ui:binary <alluis_qt4@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
-
-all:ui_5_qt5
-	a ui:Qt5UI ;
-	ui:binary <alluis_qt5@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
-
-all:ui_6_show
+custom:ui_6_show
 	a ui:UI ;
-	ui:binary <alluis_show@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
+	ui:binary <customui_ui@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <customui_ui.ttl> .
 
-all:ui_7_kx
+custom:ui_7_kx
 	a kx:Widget ;
-	ui:binary <alluis_kx@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
-
-all:ui_8_eo
-	a ui:EoUI ;
-	ui:binary <alluis_eo@CMAKE_SHARED_MODULE_SUFFIX@> ;
-	rdfs:seeAlso <alluis_ui.ttl> .
+	ui:binary <customui_ui@CMAKE_SHARED_MODULE_SUFFIX@> ;
+	rdfs:seeAlso <customui_ui.ttl> .

@@ -1,13 +1,7 @@
-# alluis.lv2
+# customui.lv2
 
-## Plugin to test various UI Toolkits
+## Plugin to test custom LV2 UI
 
-* UI:X11UI
-* UI:GtkUI
-* UI:Gtk3UI
-* UI:Qt4UI
-* UI:Qt5UI
-* UI:EoUI
 * UI:showInterface
 * kx:Widget
 

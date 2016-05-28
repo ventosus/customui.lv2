@@ -18,34 +18,13 @@
 @prefix ui:   <http://lv2plug.in/ns/extensions/ui#> .
 @prefix kx:		<http://kxstudio.sf.net/ns/lv2ext/external-ui#> .
 
-@prefix all:	<http://open-music-kontrollers.ch/lv2/alluis#> .
+@prefix custom:	<http://open-music-kontrollers.ch/lv2/customui#> .
 
-all:ui_1_x11
-	a ui:X11UI ;
-	lv2:requiredFeature ui:idleInterface ;
-	lv2:optionalFeature ui:resize ;
-  lv2:extensionData ui:idleInterface, ui:resize .
-
-all:ui_2_gtk2
-	a ui:GtkUI .
-
-all:ui_3_gtk3
-	a ui:Gtk3UI .
-
-all:ui_4_qt4
-	a ui:Qt4UI .
-
-all:ui_5_qt5
-	a ui:Qt5UI .
-
-all:ui_6_show
+custom:ui_6_show
 	a ui:UI ;
 	lv2:requiredFeature ui:idleInterface ;
 	lv2:extensionData ui:idleInterface, ui:showInterface .
 
-all:ui_7_kx
+custom:ui_7_kx
 	a kx:Widget ;
 	lv2:requiredFeature kx:Host .
-
-all:ui_8_eo
-	a ui:EoUI .

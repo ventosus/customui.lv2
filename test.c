@@ -16,14 +16,17 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
 
-#include <alluis.h>
+#include <customui.h>
 
 typedef struct _handle_t handle_t;
 
 struct _handle_t {
 	const float *input;
+	const float *audio_in;
 	float *output;
+	float *audio_out;
 };
 
 static LV2_Handle
@@ -42,10 +45,21 @@ connect_port(LV2_Handle instance, uint32_t port, void *data)
 {
 	handle_t *handle = instance;
 
-	if(port == 0)
-		handle->input = data;
-	else if(port == 1)
-		handle->output = data;
+	switch(port)
+	{
+		case 0:
+			handle->input = data;
+			break;
+		case 1:
+			handle->output = data;
+			break;
+		case 2:
+			handle->audio_in = data;
+			break;
+		case 3:
+			handle->audio_out = data;
+			break;
+	}
 }
 
 static void
@@ -54,6 +68,7 @@ run(LV2_Handle instance, uint32_t nsamples)
 	handle_t *handle = instance;
 
 	*handle->output = *handle->input;
+	memcpy(handle->audio_out, handle->audio_in, nsamples * sizeof(float));
 }
 
 static void
@@ -64,8 +79,8 @@ cleanup(LV2_Handle instance)
 	free(handle);
 }
 
-static const LV2_Descriptor alluis_test= {
-	.URI						= ALLUIS_TEST_URI,
+static const LV2_Descriptor customui_test= {
+	.URI						= CUSTOMUI_TEST_URI,
 	.instantiate		= instantiate,
 	.connect_port		= connect_port,
 	.activate				= NULL,
@@ -86,7 +101,7 @@ lv2_descriptor(uint32_t index)
 	switch(index)
 	{
 		case 0:
-			return &alluis_test;
+			return &customui_test;
 
 		default:
 			return NULL;

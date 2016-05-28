@@ -20,7 +20,7 @@
 @prefix lic:	<http://opensource.org/licenses/> .
 @prefix omk:	<http://open-music-kontrollers.ch/ventosus#> .
 @prefix proj:	<http://open-music-kontrollers.ch/lv2/> .
-@prefix all:	<http://open-music-kontrollers.ch/lv2/alluis#> .
+@prefix custom:	<http://open-music-kontrollers.ch/lv2/customui#> .
 
 # Maintainer
 omk:me
@@ -30,17 +30,17 @@ omk:me
 	foaf:homepage <http://open-music-kontrollers.ch> .
 
 # Project
-proj:alluis
+proj:customui
 	a doap:Project ;
 	doap:maintainer omk:me ;
-	doap:name "All UIs Bundle" .
+	doap:name "Custom UIs Bundle" .
 
 # Test 
-all:test
+custom:test
 	a lv2:Plugin ;
-	doap:name "All UIs Test" ;
+	doap:name "Custom UIs Test" ;
 	doap:license lic:Artistic-2.0 ;
-	lv2:project proj:alluis ;
+	lv2:project proj:customui ;
 
 	lv2:port [
 	  a lv2:InputPort ,
@@ -55,4 +55,16 @@ all:test
 		lv2:index 1 ;
 		lv2:symbol "output_1" ;
 		lv2:name "Output 1" ;
+	] , [
+	  a lv2:InputPort ,
+			lv2:AudioPort;
+		lv2:index 2 ;
+		lv2:symbol "audio_in_1" ;
+		lv2:name "Audio In 1" ;
+	] , [
+	  a lv2:OutputPort ,
+			lv2:AudioPort ;
+		lv2:index 3 ;
+		lv2:symbol "audio_out_2" ;
+		lv2:name "Audio Out 2" ;
 	] .
