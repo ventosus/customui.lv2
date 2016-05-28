@@ -119,6 +119,7 @@ instantiate(const LV2UI_Descriptor *descriptor, const char *plugin_uri,
 		return NULL;
 
 	handle->controller = controller;
+	handle->done = 1;
 
 	if(descriptor == &customui_test_kx)
 	{
