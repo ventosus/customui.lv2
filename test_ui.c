@@ -69,9 +69,6 @@ _hide(LV2UI_Handle instance)
 {
 	handle_t *handle = instance;
 
-	if(handle->host && handle->host->ui_closed)
-		handle->host->ui_closed(handle->controller);
-
 	printf("_hide\n");
 	handle->done = 1;
 
@@ -89,7 +86,11 @@ _kx_run(LV2_External_UI_Widget *widget)
 	handle_t *handle = (void *)widget - offsetof(handle_t, widget);
 
 	if(_idle(handle))
+	{
+		if(handle->host && handle->host->ui_closed)
+			handle->host->ui_closed(handle->controller);
 		_hide(handle);
+	}
 }
 
 static void
@@ -105,6 +106,7 @@ _kx_hide(LV2_External_UI_Widget *widget)
 {
 	handle_t *handle = (void *)widget - offsetof(handle_t, widget);
 
+	handle->done = 1; // do not call ui_closed
 	_hide(handle);
 }
 
