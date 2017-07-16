@@ -21,7 +21,7 @@
 @prefix custom:	<http://open-music-kontrollers.ch/lv2/customui#> .
 
 custom:ui_6_show
-	a ui:UI ;
+	a custom:UI ;
 	lv2:requiredFeature ui:idleInterface ;
 	lv2:extensionData ui:idleInterface, ui:showInterface .
 

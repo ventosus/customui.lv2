@@ -28,6 +28,10 @@ kx:Widget
 kx:Host
 	a lv2:Feature .
 
+custom:UI
+	a rdfs:Class, owl:Class ;
+	rdfs:subClassOf ui:UI .
+
 custom:test
 	a lv2:Plugin ;
 	lv2:minorVersion @CUSTOMUI_MINOR_VERSION@ ;
@@ -38,7 +42,7 @@ custom:test
 	rdfs:seeAlso <customui.ttl> .
 
 custom:ui_6_show
-	a ui:UI ;
+	a custom:UI ;
 	ui:binary <customui_ui@CMAKE_SHARED_MODULE_SUFFIX@> ;
 	rdfs:seeAlso <customui_ui.ttl> .
 
